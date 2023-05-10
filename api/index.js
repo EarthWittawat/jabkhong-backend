@@ -1,5 +1,6 @@
 const express = require('express'),
 app = express(),
+
 cors = require('cors'),
 bodyParser = require('body-parser');
 const mysql = require('mysql2')
@@ -28,3 +29,4 @@ app.get('/report', function (req, res, next) {
       }
     );
   })
+module.exports = app;
