@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     connection.query(
       'SELECT * FROM `report`',
       function(err, results, fields) {
-        res.end(results);
+        res.json(results);
       }
     );
     } catch(error){
