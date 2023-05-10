@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     database: 'jabkhong'
     });
 
-router.get('/report', function (req, res, next) {
+router.get('/', function (req, res, next) {
     connection.query(
       'SELECT * FROM `report`',
       function(err, results, fields) {
