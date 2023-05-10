@@ -1,5 +1,8 @@
-export default function handler(req, res) {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json({ name: 'John Doe' });
-  }
+const express = require("express");
+const router = express.Router();
+
+app.get("/", (req, res) => {
+    res.send("Express on Vercel");
+  });
+
+module.exports = router
