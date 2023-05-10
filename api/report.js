@@ -1,5 +1,6 @@
-const express = reqiuire("express");
+const express = require("express");
 const router = express.Router();
+const mysql = require('mysql2')
 
 const connection = mysql.createConnection({
     host: 'jabkhong.ckj2cg17krub.us-east-1.rds.amazonaws.com',
