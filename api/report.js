@@ -10,13 +10,19 @@ const connection = mysql.createConnection({
     database: 'jabkhong'
     });
 
-router.get('/', function (req, res, next) {
+router.get('/', async (req, res) => {
+    try{
     connection.query(
       'SELECT * FROM `report`',
       function(err, results, fields) {
         res.end(results);
       }
     );
-  });
+    } catch(error){
+        console.error(error);
+        return res.status(500).send("Server error");
+    }
+});
+
 
 module.exports = router
