@@ -1,8 +1,6 @@
-const express = require('express'),
-app = express(),
+const app = require('express')();
+const { v4 } = require('uuid');
 
-cors = require('cors'),
-bodyParser = require('body-parser');
 const mysql = require('mysql2')
 
 const connection = mysql.createConnection({
@@ -12,21 +10,19 @@ user: 'admin',
 password: 'jabkhong2023',
 database: 'jabkhong'
 });
-var server = {
-  port: 4040
-};
 
-app.use(cors())
-app.use(bodyParser.json());
-
-app.listen( server.port , () => console.log(`Server started, listening port: ${server.port}`));
+app.get('/api', (req, res) => {
+  const path = `/api/item/${v4()}`;
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+  res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
+});
 app.get('/report', function (req, res, next) {
     connection.query(
       'SELECT * FROM `report`',
       function(err, results, fields) {
-        console.log(results);
-        res.json(results);
+        res.end(results);
       }
     );
-  })
+  });
 module.exports = app;
