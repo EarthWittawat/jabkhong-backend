@@ -19,4 +19,4 @@ router.get('/report', function (req, res, next) {
     );
   });
 
-module.exports = router;
+module.exports = router
