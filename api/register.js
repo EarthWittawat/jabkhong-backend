@@ -12,6 +12,9 @@ const connection = mysql.createConnection({
 
 
 router.get('/', async (req, res) => {
+    const name = req.body.name
+    const id_card = req.body.id_card
+    const tel = req.body.tel
     try{
     connection.query(
       'INSERT INTO users (name, id_card, tel) VALUES (?,?,?)',
