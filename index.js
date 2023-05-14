@@ -7,11 +7,7 @@ const reportrequest = require("./api/reportrequest");
 const register = require("./api/register");
 const login = require("./api/login");
 app.use(express.json({extends: false}));
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://jabkhong.vercel.app"); 
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+
 app.use(cors());
 app.use("/api/report",report);
 app.use("/api/user",user);
