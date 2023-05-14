@@ -4,6 +4,7 @@ const app = express();
 const report = require("./api/report");
 const user = require("./api/user");
 const reportrequest = require("./api/reportrequest");
+const register = require("./api/register");
 app.use(express.json({extends: false}));
 app.use(cors());
 
