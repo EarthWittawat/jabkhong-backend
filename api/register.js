@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 router.get('/', async (req, res) => {
     try{
     connection.query(
-      'SELECT * FROM `report`',
+      'SELECT * FROM `users`',
       function(err, results, fields) {
         res.json(results);
       }

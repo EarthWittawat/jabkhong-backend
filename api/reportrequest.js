@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 router.get('/', async (req, res, next) => {
     try{
     connection.query(
-      'SELECT * FROM `dummy_report`',
+      'SELECT * FROM `report`',
       function(err, results, fields) {
         const filters = req.query;
         const filterdUsers = results.filter(search => {
