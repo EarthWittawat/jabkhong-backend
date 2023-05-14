@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
   });
 
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const name = req.body.name
     const id_card = req.body.id_card
     const tel = req.body.tel
