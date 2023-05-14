@@ -14,7 +14,8 @@ const connection = mysql.createConnection({
 router.get('/', async (req, res) => {
     try{
     connection.query(
-      'SELECT * FROM `users`',
+      'INSERT INTO users (name, id_card, tel) VALUES (?,?,?)',
+      [name, id_card, tel],
       function(err, results, fields) {
         res.json(results);
       }
