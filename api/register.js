@@ -23,13 +23,13 @@ router.get('/', async (req, res) => {
         return res.status(500).send("Server error");
     }
 });
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     const name = req.body.name
     const id_card = req.body.id_card
     const tel = req.body.tel
     try{
     connection.query(
-      'INSERT INTO users (name, id_card, tel) VALUES (?,?,?)',
+      "INSERT INTO `users` (name, id_card, tel) VALUES (?,?,?)",
       [name, id_card, tel],
       function(err, results, fields) {
         res.json(results);
