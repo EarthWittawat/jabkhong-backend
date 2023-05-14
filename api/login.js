@@ -24,18 +24,22 @@ const connection = mysql.createConnection({
 router.post('/', (req, res) => {
     const id_card = req.body.id_card
     const tel = req.body.tel
-    try{
     connection.query(
       "SELECT * FROM `users` WHERE id_card = ? AND tel = ?",
       [id_card, tel],
       function(err, results, fields) {
         res.send(results);
+        if(err){
+            res.send({err :err});
+        }
+        if(results.length > 0){
+            res.send(results);
+        }
+        else{
+            res.send({message : "Wrong Information"});
+        }
       }
     );
-    } catch(error){
-        console.error(error);
-        return res.send({message : "Wrong Username/Password"})
-    }
 });
 
 
