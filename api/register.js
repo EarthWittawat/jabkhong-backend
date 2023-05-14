@@ -10,7 +10,19 @@ const connection = mysql.createConnection({
   database:  process.env.DATABASE
   });
 
-
+router.get('/', async (req, res) => {
+    try{
+    connection.query(
+      'SELECT * FROM `users`',
+      function(err, results, fields) {
+        res.json(results);
+      }
+    );
+    } catch(error){
+        console.error(error);
+        return res.status(500).send("Server error");
+    }
+});
 router.post('/', async (req, res) => {
     const name = req.body.name
     const id_card = req.body.id_card
