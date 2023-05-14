@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
   password:  process.env.PASSWORD,
   database:  process.env.DATABASE
   });
+  router.use(cors());
   router.get('/', async (req, res) => {
     try{
     connection.query(
