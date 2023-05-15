@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+var path = require('path')
 const app = express();
 const report = require("./api/report");
 const user = require("./api/user");
@@ -8,13 +9,9 @@ const register = require("./api/register");
 const login = require("./api/login");
 const report_waitlist = require("./api/reportwaitlist");
 app.use(express.json({extends: false}));
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*'); 
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-    next();
-  });
-app.use(cors());
+app.use(cors({
+    origin: "https://jabkhong.vercel.app"
+}));
 app.use("/api/report",report);
 app.use("/api/user",user);
 app.use("/api/reportrequest",reportrequest);
