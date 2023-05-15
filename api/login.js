@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require('mysql2')
-const cors = require('cors');
 const connection = mysql.createConnection({
   host: process.env.HOST,
   port:   process.env.PORT,
